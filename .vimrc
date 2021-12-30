@@ -10,7 +10,7 @@
 set number
 set mouse=a
 set incsearch
-set smartcase
+"set smartcase
 set background=dark
 set complete+=kspell
 "set relativenumber
@@ -19,6 +19,9 @@ set wildmenu
 set wrap
 set hlsearch
 set cursorline
+set noswapfile
+set autoindent
+
 set laststatus=2
 set statusline=
 "set statusline+=%-10.3n\                     " buffer number                         
@@ -28,11 +31,12 @@ set statusline+=%y                           " file type
 set statusline+=%=                           " right align remainder                  
 "set statusline+=0x%-8B                       " character value                        
 set statusline+=%-14(%l,%c%V%)               " line, character                        
-set statusline+=%<%P                         " file position                          
+"set statusline+=%<%P                         " file position                          
+set ruler
 
 syntax on 
 
-
+" Change the cursor style when in command mode and insert mode
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
@@ -52,6 +56,10 @@ Plug 'rakr/vim-one'
 " Allow to comment a line or multiple lines with a key shortcut
 Plug 'vim-scripts/comments.vim'
 
+" Auto complete double quotes, single quotes, bracket and square bracket
+Plug 'jiangmiao/auto-pairs'
+
+
 call plug#end()
 
 " Choosing one-dark theme
@@ -67,13 +75,15 @@ hi Pmenu ctermbg=blue guibg=blue ctermfg=black
 hi PmenuSel ctermbg=black guibg=black ctermfg=white
 
 " Changing line number color 
-hi LineNr term=bold cterm=NONE ctermfg=White ctermbg=NONE gui=NONE guifg=White guibg=NONE
+hi LineNr term=bold cterm=NONE ctermfg=gray ctermbg=NONE gui=NONE guifg=White guibg=NONE
 
 " Changing StatusLine color 
 hi StatusLine cterm=bold,reverse ctermfg=black ctermbg=green
 
 " Changing cursor line number color 
-hi CursorLineNr cterm=NONE ctermbg=yellow ctermfg=white guibg=NONE guifg=NONE
+hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=white guibg=NONE guifg=NONE
+
+
 
 
 " Key mapping settings
@@ -97,14 +107,16 @@ map <C-Left> :vertical resize -10<CR>
 
 map <C-Right> :vertical resize +10<CR>
 
-map <C-Up> :resize -10<CR>
-map <C-DOWN> :resize +10<CR>
+map <C-Up> :resize +10<CR>
+map <C-DOWN> :resize -10<CR>
 
 " This will paste the copied words  
 map ,p "0p
 
 " This will open the terminal 
 map ,t :botright terminal<CR>
+
+
 
 
 
