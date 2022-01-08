@@ -1,7 +1,7 @@
 
+
 " To install vim-plug 
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 
 
 
@@ -13,7 +13,6 @@
 
 " This will open the terminal 
 "autocmd VimEnter * :botright terminal
-
 
 set number
 set mouse=a
@@ -91,6 +90,9 @@ hi StatusLine cterm=bold,reverse ctermfg=black ctermbg=green
 " Changing cursor line number color 
 hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=white guibg=NONE guifg=NONE
 
+" Changing the background color
+hi Normal ctermbg=Black
+
 
 
 
@@ -99,6 +101,7 @@ hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=white guibg=NONE guifg=NONE
 " Keep choosing the option thet been cursored using the arrow keys from the popup menu
 inoremap <expr> <Down> pumvisible() ? "<C-n>" : "<Down>"
 inoremap <expr> <Up> pumvisible() ? "<C-p>" : "<Up>"
+
 
 " Select the option from popup menu
 inoremap <expr> <Right> pumvisible() ? "<C-y>" : "<Right>"
@@ -124,7 +127,21 @@ map ,p "0p
 " This will open the terminal 
 map ,t :botright terminal<CR>
 
+" This ,r key shortcut will run the python file and show the terminal output
+map ,r :!python3 %<CR>
 
+
+" This will clear the output terminal 
+map ,l :!clear<CR>
+
+map ,w :w<CR>
+
+
+" Remap escp key to ,q
+map ,q <Esc><CR>
+nmap ,q <Esc><CR>
+inoremap ,q <Esc><CR>
+vmap ,q <Esc><CR>
 
 
 
