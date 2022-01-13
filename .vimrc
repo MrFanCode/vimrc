@@ -34,11 +34,12 @@ set statusline=
 "set statusline+=%-10.3n\                     " buffer number                         
 set statusline+=%F\                          " filename                               
 set statusline+=%h%m%r%w                     " status flags                           
-set statusline+=%y                           " file type                              
 set statusline+=%=                           " right align remainder                  
+set statusline+=%y                           " file type                              
+"set statusline+=%=                           " right align remainder                  
 "set statusline+=0x%-8B                       " character value                        
 set statusline+=%-14(%l,%c%V%)               " line, character                        
-"set statusline+=%<%P                         " file position                          
+"set statusline+=%<%P                          file position                          
 set ruler
 
 syntax on 
@@ -47,7 +48,11 @@ syntax on
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+let g:gruvbox_contranst_dark='hard' 
 
+let g:gruvbox_termcolors=16
+
+"let g:gruvbox_italic=1
 
 call plug#begin()
 
@@ -66,20 +71,23 @@ Plug 'vim-scripts/comments.vim'
 " Auto complete double quotes, single quotes, bracket and square bracket
 Plug 'jiangmiao/auto-pairs'
 
+" GruvBox theme 
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-" Choosing one-dark theme
-colorscheme one
+
+colorscheme gruvbox
+
 
 " Changing visual mode background 
 hi Visual cterm=NONE ctermfg=NONE ctermbg=228 guibg=#f2e5bc
 
 " Changing popup menu background color
-hi Pmenu ctermbg=blue guibg=blue ctermfg=black
+hi Pmenu guibg=Black guifg=white
 
 " Changing Selected item color in popup menu 
-hi PmenuSel ctermbg=black guibg=black ctermfg=white
+hi PmenuSel ctermbg=green guibg=lightblue ctermfg=white
 
 " Changing line number color 
 hi LineNr term=bold cterm=NONE ctermfg=gray ctermbg=NONE gui=NONE guifg=White guibg=NONE
@@ -91,9 +99,29 @@ hi StatusLine cterm=bold,reverse ctermfg=black ctermbg=green
 hi CursorLineNr cterm=NONE ctermbg=NONE ctermfg=white guibg=NONE guifg=NONE
 
 " Changing the background color
-hi Normal ctermbg=Black
+"hi Normal ctermbg=Black
 
 
+
+
+
+
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+   "< https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 
 " Key mapping settings
@@ -142,6 +170,14 @@ map ,q <Esc><CR>
 nmap ,q <Esc><CR>
 inoremap ,q <Esc><CR>
 vmap ,q <Esc><CR>
+
+
+
+" To run django from the key shortcut
+map ,b :!python3 /home/mrfan/Desktop/Projects/DjangoTutorial/manage.py runserver<CR>
+
+" Open Lexplore on right side.
+map ,e :Lex!<CR>
 
 
 
