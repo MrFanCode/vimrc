@@ -74,6 +74,9 @@ Plug 'jiangmiao/auto-pairs'
 " GruvBox theme 
 Plug 'morhetz/gruvbox'
 
+" NerdTree
+Plug 'scrooloose/nerdtree'
+
 call plug#end()
 
 
@@ -139,7 +142,7 @@ inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>"
 inoremap <expr> <Left> pumvisible() ? "<C-e>" :"<Left>"
 
 " Open Vexpolore
-map ,<Tab> :Vex<CR> 
+map ,<Tab> :NERDTree<CR>
 
 " This will resize the window
 map <C-Left> :vertical resize -10<CR>
@@ -173,8 +176,6 @@ vmap ,q <Esc><CR>
 
 
 
-" To run django from the key shortcut
-map ,b :!python3 /home/mrfan/Desktop/Projects/DjangoTutorial/manage.py runserver<CR>
 
 " Open Lexplore on right side.
 map ,e :Lex!<CR>
