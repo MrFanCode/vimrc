@@ -42,9 +42,12 @@ set statusline+=%-14(%l,%c%V%)               " line, character
 "set statusline+=%<%P                          file position                          
 set ruler
 
-syntax on 
+"syntax on 
+syntax enable
 
-"filetype plugin indent on
+
+
+filetype plugin indent on
 
 " Change the cursor style when in command mode and insert mode
 let &t_SI = "\e[6 q"
@@ -79,10 +82,13 @@ Plug 'morhetz/gruvbox'
 " NerdTree
 Plug 'scrooloose/nerdtree'
 
+"Dracula theme 
+Plug 'dracula/vim', {'as': 'dracula'}
+
 call plug#end()
 
 
-colorscheme gruvbox
+colorscheme dracula
 
 
 " Changing visual mode background 
